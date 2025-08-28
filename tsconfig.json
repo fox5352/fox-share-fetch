@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+		"module": "esnext",
+		"target": "es2024",
+		"lib": ["esnext", "dom"],
+		"declaration": true,
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"outDir": "dist",
+		"resolveJsonModule": false
+	},
+	"include": ["src/**/*"]
+}
