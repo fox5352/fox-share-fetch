@@ -36,6 +36,7 @@
 		"whatwg-fetch": "^3.6.20"
 	},
 	"dependencies": {
+		"crypto-js": "^4.2.0",
 		"tslib": "^2.8.1"
 	}
 }
