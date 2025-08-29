@@ -37,8 +37,9 @@ export async function heathCheck(url: string, res:boolean): Promise<boolean> {
 		});
 
 		return res.ok;
+		
 	} catch (error) {
-		console.error("Failed heath check");		
+		console.error(`Failed heath check: ${error}`);		
 		return false;
 	}
 }
@@ -51,13 +52,12 @@ export async function getindex(url:string): Promise<Routes|null> {
 		})
 
 		if (!res.ok) {
-			throw new Error("Failed to get index of server");
+			return null
 		}
-		
+				
 		return await res.json();
 	} catch (error) {
 		console.error("Failed to get index of server");
-		
 		return null
 	}		
 }
