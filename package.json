@@ -2,13 +2,12 @@
 	"name": "fox-share-fetch",
 	"version": "1.0.0",
 	"description": "",
-	"main": "dist/main.js",
-	"type": "module",
+	"main": "./dist/main.js",
+	"module": "./dist/main.mjs",
+	"types": "./dist/main.d.ts",
 	"exports": {
-		".": {
-			"import": "./dist/main.mjs",
-			"require": "./dist/main.js"
-		}
+		"import": "./dist/main.mjs",
+		"require": "./dist/main.js"
 	},
 	"types": "dist/main.d.ts",
 	"files": [
