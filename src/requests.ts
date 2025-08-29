@@ -57,10 +57,11 @@ export async function reqwest<T>(
 	return await res.json();
 }
 
-export async function heathCheck(url: string): Promise<boolean> {
+export async function heathCheck(url: string, key: string | null = null): Promise<boolean> {
 	const res = await reqwest<Routes>(`${url}/`, {
 		method: "GET"
-	});
+	}, key);
+
 
 	if (res.data != null) {
 		return true;
@@ -70,11 +71,11 @@ export async function heathCheck(url: string): Promise<boolean> {
 }
 
 
-export async function getindex(url: string): Promise<Routes | null> {
+export async function getindex(url: string, key: string | null = null): Promise<Routes | null> {
 	try {
 		const res = await reqwest<Routes>(`${url}/`, {
 			method: "GET",
-		})
+		}, key)
 
 		const { data } = res;
 
