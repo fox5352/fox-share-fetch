@@ -1,5 +1,5 @@
 import { decrypt } from "./utils";
-import { Res } from "./types"
+import { Res, Settings } from "./types"
 
 export type Methods = "GET" | "POST" | "UPDATE" | "DELETE";
 
@@ -83,5 +83,21 @@ export async function getindex(url: string, key: string | null = null): Promise<
 	} catch (error) {
 		console.error("Failed to get index of server");
 		return null
+	}
+}
+
+
+export async function getSettings(url: string, key: string | null = null): Promise<Settings | null> {
+	try {
+		const res = await reqwest<Settings>(`${url}/settings`, {
+			method: "GET"
+		}, key);
+
+		const { data } = res;
+
+		return data;
+	} catch (error) {
+		console.error(error);
+		return null;
 	}
 }

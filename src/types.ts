@@ -1,5 +1,10 @@
 import { info } from "console"
 
+export interface Cookie {
+	id: string
+	timestamp: number
+}
+
 export interface Res<T> {
 	data: T | null
 }
@@ -49,4 +54,12 @@ export interface FileTypeResponse {
 export interface DownloadRespose {
 	message: string,
 	data: string,
+}
+
+export type AddressMode = "127.0.0.1" | "0.0.0.0";
+
+export interface Settings {
+	allowed_types: string[],
+	port: string,
+	address_mode: AddressMode
 }
