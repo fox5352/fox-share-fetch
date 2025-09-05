@@ -116,3 +116,6 @@ export async function getAllowedList(url: string, key: string | null = null): Pr
 		return null;
 	}
 }
+
+
+// /filetype/{audio|doc|image}

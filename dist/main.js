@@ -122,6 +122,7 @@ async function getindex(url, key = null) {
         return null;
     }
 }
+// /filetype/{audio|doc|image}
 
 class FoxFetch {
     url;
