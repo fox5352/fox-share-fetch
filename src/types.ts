@@ -63,3 +63,8 @@ export interface Settings {
 	port: string,
 	address_mode: AddressMode
 }
+
+export interface Allowed {
+	messages: string,
+	allowed_types: string[],
+}

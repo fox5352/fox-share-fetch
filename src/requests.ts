@@ -1,5 +1,5 @@
 import { decrypt } from "./utils";
-import { Res, Settings } from "./types"
+import { Allowed, Res, Settings } from "./types"
 
 export type Methods = "GET" | "POST" | "UPDATE" | "DELETE";
 
@@ -94,6 +94,21 @@ export async function getSettings(url: string, key: string | null = null): Promi
 		}, key);
 
 		const { data } = res;
+
+		return data;
+	} catch (error) {
+		console.error(error);
+		return null;
+	}
+}
+
+
+export async function getAllowedList(url: string, key: string | null = null): Promise<Allowed | null> {
+	try {
+		const res = await reqwest<Allowed>(`${url}/allowed`, { method: "GET" }, key);
+
+		const { data } = res;
+
 
 		return data;
 	} catch (error) {
