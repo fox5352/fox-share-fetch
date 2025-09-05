@@ -120,7 +120,48 @@ async function getindex(url, key = null) {
         return null;
     }
 }
+async function getSettings(url, key = null) {
+    try {
+        const res = await reqwest(`${url}/settings`, {
+            method: "GET"
+        }, key);
+        const { data } = res;
+        return data;
+    }
+    catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+async function getAllowedList(url, key = null) {
+    try {
+        const res = await reqwest(`${url}/allowed`, { method: "GET" }, key);
+        const { data } = res;
+        return data;
+    }
+    catch (error) {
+        console.error(error);
+        return null;
+    }
+}
 // /filetype/{audio|doc|image}
+async function getFilesList(url, filetype, options) {
+    try {
+        const { key, page, amount } = {
+            key: options?.key || null,
+            page: options?.page || 0,
+            amount: options?.amount || 10
+        };
+        const fullUrl = `${url}/filetype/${filetype}?page=${page}&amount=${amount}`;
+        const res = await reqwest(fullUrl, { method: "GET" }, key);
+        const { data } = res;
+        return data;
+    }
+    catch (error) {
+        console.error(error);
+        return null;
+    }
+}
 
 class FoxFetch {
     url;
@@ -146,5 +187,5 @@ function createFoxFetchStore(url, key = null) {
     return FoxState;
 }
 
-export { FoxFetch, base64ToBuffer, createFoxFetchStore, decrypt, encodeToBase64, encrypt, getindex, heathCheck };
+export { FoxFetch, base64ToBuffer, createFoxFetchStore, decrypt, encodeToBase64, encrypt, getAllowedList, getFilesList, getSettings, getindex, heathCheck, reqwest };
 //# sourceMappingURL=main.mjs.map

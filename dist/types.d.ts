@@ -27,11 +27,11 @@ export interface FileMetaData {
     ext: string;
 }
 export interface DirectoryResponse {
-    directory: String;
+    directory: string;
     entries: FileMetaData[];
 }
 export interface FileTypeResponse {
-    messages: String;
+    messages: string;
     entries: DirectoryResponse[];
 }
 export interface DownloadRespose {
@@ -44,7 +44,7 @@ export interface Settings {
     port: string;
     address_mode: AddressMode;
 }
-export interface Allowed {
-    messages: string;
-    allowed_types: string[];
+export interface FileTypeQuery {
+    page: number | null;
+    amount: number | null;
 }

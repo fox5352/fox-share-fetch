@@ -1,4 +1,4 @@
-import { Allowed, Res, Settings } from "./types";
+import { Allowed, FileTypeResponse, Res, Settings } from "./types";
 export type Methods = "GET" | "POST" | "UPDATE" | "DELETE";
 export type RouteData = {
     path: string;
@@ -14,3 +14,10 @@ export declare function heathCheck(url: string, key?: string | null): Promise<bo
 export declare function getindex(url: string, key?: string | null): Promise<Routes | null>;
 export declare function getSettings(url: string, key?: string | null): Promise<Settings | null>;
 export declare function getAllowedList(url: string, key?: string | null): Promise<Allowed | null>;
+type getFilesListOptions = {
+    key: string | null;
+    page: number;
+    amount: number;
+};
+export declare function getFilesList(url: string, filetype: "image" | "doc" | "audio", options?: getFilesListOptions): Promise<FileTypeResponse | null>;
+export {};
