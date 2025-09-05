@@ -1,5 +1,5 @@
 import { decrypt } from "./utils";
-import { Allowed, Res, Settings } from "./types"
+import { Allowed, FileTypeResponse, Res, Settings } from "./types"
 
 export type Methods = "GET" | "POST" | "UPDATE" | "DELETE";
 
@@ -118,4 +118,30 @@ export async function getAllowedList(url: string, key: string | null = null): Pr
 }
 
 
+type getFilesListOptions = {
+	key: string | null,
+	page: number,
+	amount: number
+}
+
 // /filetype/{audio|doc|image}
+export async function getFilesList(url: string, filetype: "image" | "doc" | "audio", options?: getFilesListOptions): Promise<FileTypeResponse | null> {
+	try {
+		const { key, page, amount }: getFilesListOptions = {
+			key: options?.key || null,
+			page: options?.page || 0,
+			amount: options?.amount || 10
+		}
+
+		const fullUrl = `${url}/filetype/${filetype}?page=${page}&amount=${amount}`
+
+		const res = await reqwest<FileTypeResponse>(fullUrl, { method: "GET" }, key);
+
+		const { data } = res;
+
+		return data;
+	} catch (error) {
+		console.error(error);
+		return null;
+	}
+}
